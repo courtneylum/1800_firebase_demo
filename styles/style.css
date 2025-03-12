@@ -54,3 +54,17 @@
   border-color: #354F52;
   /* Dark green for border */
 }
+
+/* .card-container {
+  max-height: 500px;
+  /* Adjust the maximum height as needed */
+  overflow-y: auto;
+}
+
+/* Style the individual cards as needed */
+.card {
+  width: 50%;
+  /* Adjust the width as per your design, leaving a little space for margins */
+  margin: 2%;
+  /* Add margin between cards */
+} */
