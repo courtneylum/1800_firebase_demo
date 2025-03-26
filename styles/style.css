@@ -55,6 +55,10 @@
   /* Dark green for border */
 }
 
+.material-icons {
+  cursor: pointer;
+}
+
 /* .card-container {
   max-height: 500px;
   /* Adjust the maximum height as needed */
@@ -68,3 +72,4 @@
   margin: 2%;
   /* Add margin between cards */
 } */
+
