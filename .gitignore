@@ -4,3 +4,7 @@ node_modules/
 .vscode/
 firebaseAPI_TEAM99.js
 firebaseAPI_TEAM99.js
+.firebase
+firebase-debug.log
+firebase-debug.*.log
+.firebase/

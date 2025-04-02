@@ -1,5 +1,5 @@
 //Global variable pointing to the current user's Firestore document
-var currentUser;   
+var currentUser;
 
 function getNameFromAuth() {
     firebase.auth().onAuthStateChanged(user => {
@@ -103,10 +103,10 @@ function displayCardsDynamically(collection) {
     let cardTemplate = document.getElementById("hikeCardTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
 
     db.collection(collection)  //the collection called "hikes"
-    .orderBy("hike_time")
-    // .limit(2)
-    .get()
-    .then(allHikes => {
+        .orderBy("hike_time")
+        // .limit(2)
+        .get()
+        .then(allHikes => {
             //var i = 1;  //Optional: if you want to have a unique ID for each hike
             allHikes.forEach(doc => { //iterate thru each doc
                 var title = doc.data().name;       // get value of the "name" key
@@ -130,7 +130,7 @@ function displayCardsDynamically(collection) {
                 currentUser.get().then(userDoc => {
                     //get the user name
                     var bookmarks = userDoc.data().bookmarks;
-                    if (bookmarks.includes(docID)) {
+                    if (bookmarks && bookmarks.includes(docID)) {
                         document.getElementById('save-' + docID).innerText = 'bookmark';
                     }
                 })
@@ -149,6 +149,7 @@ function displayCardsDynamically(collection) {
         })
 }
 
+
 // displayCardsDynamically("hikes");  //input param is the name of the collection
 
 //-----------------------------------------------------------------------------
@@ -159,7 +160,7 @@ function displayCardsDynamically(collection) {
 function updateBookmark(hikeDocID) {
     currentUser.get().then(userDoc => {
         var bookmarks = userDoc.data().bookmarks;
-        if (bookmarks.includes(hikeDocID)) {
+        if (bookmarks && bookmarks.includes(hikeDocID)) {
             currentUser.update({
                 bookmarks: firebase.firestore.FieldValue.arrayRemove(hikeDocID)
             })
@@ -179,7 +180,7 @@ function updateBookmark(hikeDocID) {
                 });
         }
     });
-    
+
 }
 
 //Function that calls everything needed for the main page  
@@ -199,7 +200,7 @@ function doAll() {
             getNameFromAuth();
             displayCardsDynamically("hikes");
             // saveBookmark();
-        
+
         } else {
             // No user is signed in.
             console.log("No user is signed in");
